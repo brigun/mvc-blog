@@ -11,8 +11,13 @@ public class RegistrationForm {
 	@NotNull
 	@Size(min = 1, max = 50)
 	private String password;
+
+	@NotNull
+	@Size(min = 1, max = 50)
+	private String verifyPassword;
 	
 	@NotNull
+	@Size(min = 1, max = 60)
 	private String fullName;
 
 	public String getUsername() {
@@ -30,6 +35,15 @@ public class RegistrationForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getVerifyPassword(){
+		return verifyPassword;
+	}
+	
+	public void setVerifyPassword(String verifyPassword){
+		this.verifyPassword = verifyPassword;
+		
+	}
 
 	public String getFullName() {
 		return fullName;
@@ -39,7 +53,7 @@ public class RegistrationForm {
 		this.fullName = fullName;
 	}
 	
-	
+	public RegistrationForm(){};
 	
 
 }
