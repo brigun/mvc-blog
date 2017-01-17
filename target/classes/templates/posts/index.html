@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout :: site-head"></head>
+	<title>Index of Posts</title>
+	
+	<body>
+		<header th:replace="layout :: site-header"></header>
+		<h2>Index of Posts</h2>
+		
+		<table class="indexList">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Posted on</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="p : ${indexList}">
+				<td th:text="${p.title}">post title</td>
+				<td><span th:if="${p.author}==null" th:text="unlisted"></span>
+				<span th:unless="${p.author}==null" th:text="${p.author.username}">Blogger handle</span></td>
+				<td th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">22-May-2016</td>
+				<td><a href="#" th:href="@{/posts/edit/{id}/(id=${p.id})}">edit</a>
+				 | <a href="#" th:href="@{/posts/delete/{id}/(id=${p.id})}">delete</a></td>
+			</tr>
+		</table>
+	
+	<footer th:replace="layout :: site-footer"></footer>
+	</body>
+	
+</html>

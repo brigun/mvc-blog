@@ -80,6 +80,12 @@ public class PostServiceStubImpl implements PostService{
 		throw new RuntimeException("Post not found: " + id);
 		
 	}
+	@Override
+	public boolean create(String title, String body) {
+		// TODO Auto-generated method stub
+		if (title != null && body != null){return true;}
+		return false;
+	}
 
 	
 }

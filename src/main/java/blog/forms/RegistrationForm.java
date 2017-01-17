@@ -53,7 +53,7 @@ public class RegistrationForm {
 		this.fullName = fullName;
 	}
 	
-	public RegistrationForm(){};
+	
 	
 
 }
