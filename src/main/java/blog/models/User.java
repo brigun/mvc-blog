@@ -3,20 +3,34 @@ package blog.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "users")
 public class User {
 	
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	private long id;
+	@Column(nullable = false, length = 30, unique = true)
 	private String username;
+	
+	@Column(length=60)
 	private String passwordHash;
+	
+	@Column(length = 100)
 	private String fullName;
+	
+	@OneToMany(mappedBy = "author")
 	private Set<Post> posts = new HashSet<Post>();
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -44,9 +58,15 @@ public class User {
 		this.posts = posts;
 	}
 	
-public User(){};
+	public User(){};
+
+	public User(String username, String fullName)
+	{
+		this.username = username;
+		this.fullName = fullName;
+	}
 	
-	public User(long id, String username, String fullName) {
+	public User(Long id, String username, String fullName) {
 		super();
 		this.id = id;
 		this.username = username;

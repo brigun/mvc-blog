@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
+import blog.models.User;
+
 @Service
 public class RegistrationServiceStubImpl implements RegistrationService{
 
@@ -14,6 +16,7 @@ public class RegistrationServiceStubImpl implements RegistrationService{
 		{
 			return false;
 		}
+		
 		return Objects.equals(username, password) && (fullName != "");
 			
 		

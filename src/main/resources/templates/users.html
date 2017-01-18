@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+	<title>Users</title></head>
+	
+	<body>
+		<header th:replace="layout :: site-header"></header>
+		<h1>List of Users</h1>
+		<table class="listusers">
+			<tr>
+				<th>ID#</th>
+				<th>Username</th>
+				<th>Full Name</th>
+			</tr>
+			<tr th:each="p : ${userlist}">
+				<td><span th:if="${p.id}==null" th:text="none"></span>
+				<span th:unless="${p.id}==null" th:text="${p.id}">10L</span></td>
+				<td><span th:if="${p.username}==null" th:text="anonymous"></span>
+				<span th:unless="${p.username}==null" th:text="${p.username}">Blogger handle</span></td>
+				<td><span th:if="${p.fullName}==null" th:text="unlisted"></span>
+				<span th:unless="${p.fullName}==null" th:text="${p.fullName}">FirstName LastName</span></td>
+			</tr>
+		
+		</table>
+	
+	
+	<footer th:replace="layout :: site-footer"></footer>
+	
+	</body>
+	
+	</html>
